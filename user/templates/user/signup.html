@@ -1,0 +1,33 @@
+{% extends 'user/base2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+    <section class="py-4 py-md-5 my-5">
+        <div class="container py-md-5">
+            <div class="row">
+                <div class="col-md-6 text-center"><img class="img-fluid w-100" src="../../static/user/assets/img/illustrations/Diasaka_DopeCoder1_The_student_fills_in_their_data_on_the_site_90419405-ea19-4e20-bdca-af61a0706f83.png"></div>
+                <div class="col-md-5 col-xl-4 text-center text-md-start">
+                    <h1 class="display-6 fw-bold mb-5"></h1>
+                    <p class="fs-1 fw-lighter">Регистрация</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ form|crispy }}
+                            <p></p>
+                        </div>
+                        <div class="mb-5"><button class="btn btn-dark shadow" type="submit">Создать аккаунт</button></div>
+                        <p class="text-muted">У вас есть аккаунт? <a href="login.html">Войти&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-narrow-right">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <line x1="15" y1="16" x2="19" y2="12"></line>
+                                    <line x1="15" y1="8" x2="19" y2="12"></line>
+                                </svg></a>&nbsp;</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

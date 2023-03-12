@@ -1,0 +1,76 @@
+{% extends 'mentor/base2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <section class="py-4 py-md-5 my-5"></section>
+    <main class="page" style="min-height: 100%;">
+        <section class="clean-block about-us">
+            <div class="row" style="margin-right: 0px;margin-left: 0px;">
+                <div class="col text-center">
+                    <h2 class="text-info"><span style="color: rgb(0, 0, 0);">Профиль</span></h2>
+                </div>
+            </div>
+            <div class="row justify-content-center" style="margin-right: 0px;margin-left: 0px;">
+                <div class="col-sm-6 col-lg-4" style="padding-right: 0px;padding-left: 0px;">
+                    <div class="card clean-card text-center">
+                        {% if form.image %}
+                        <img class="card-img-top w-100 d-block" src="{{ form.image.url }}">
+                            {% else %}
+                        <img class="card-img-top w-100 d-block" src="{% static 'user/assets/img/illustrations/Diasaka_DopeCoder1_Student_fills_in_their_details_2e70d372-3a8b-4b79-b0a1-e64ecbff7a14.png'%}">
+                                        {% endif %}
+                        <div class="card-body info">
+                            <div class="row" style="margin-top: -24px;">
+                                <div class="col-md-12" style="margin-top: 22px;">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="labels"><strong>ФИО</strong></p>
+                                        </div>
+                                        <div class="col">
+                                            <p class="labels">{{ form.first_name }}  {{ form.last_name }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="labels"><strong>Почта</strong></p>
+                                        </div>
+                                        <div class="col">
+                                            <p class="labels">{{ form.email }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="labels"><strong>Дата рождения</strong></p>
+                                        </div>
+                                        <div class="col">
+                                            <p class="labels">{{ form.birthdate }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="labels"><strong>Статус</strong></p>
+                                        </div>
+                                        <div class="col">
+                                            <p class="labels">
+                                                 {% if roles == 'USER' %}
+                                                        Студент
+                                                     {% else %}
+                                                       Преподаватель
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12"><a class="btn btn-success" role="button" href="{% url 'm_user_edit' %}"><i class="fas fa-pencil-alt"></i>&nbsp;Изменить</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content%}

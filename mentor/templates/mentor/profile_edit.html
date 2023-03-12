@@ -1,0 +1,23 @@
+{% extends 'mentor/base2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <section class="clean-block clean-form ">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-primary">Редактирование</h2>
+            </div>
+            <form style="max-width: 700px;" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <div class="form-group mb-3"><label class="form-label">Имя</label>{{ form.first_name }}</div>
+                <div class="form-group mb-3"><label class="form-label" style="margin-top: 15px;">Фамилия</label>{{ form.last_name }}</div>
+                <div class="form-group mb-3"><label class="form-label" style="margin-top: 15px;">Фото</label>{{ form.image }}</div>
+                <div class="form-group mb-3"><label class="form-label" style="margin-top: 15px;">Дата Рождения</label>{{ form.birthdate }}</div>
+                <div id="passwordsError" class="form-group mb-3" style="display: none;margin-bottom: 18px;"><span id="errorMessage" class="text-danger" style="font-size: 15px;">Text</span></div>
+                <hr style="margin-top: 20px;margin-bottom: 20px;">
+                <div class="form-group mb-3"><button class="btn btn-dark d-block w-100" id="submitButton" type="submit"><i class="fas fa-save"></i>&nbsp;Сохранить</button><a class="btn btn-primary d-block w-100" role="button" href="profile.html" style="margin-top: 15px;"><i class="fas fa-arrow-left"></i>&nbsp;Назад</a></div>
+            </form>
+        </div>
+    </section>
+{% endblock content %}
