@@ -5,7 +5,6 @@ from quiz.models import Student, Exam
 
 
 class ExamForm(forms.ModelForm):
-    students = ((i+1, str(perm)) for i, perm in enumerate(Student.objects.all()))
 
     users = forms.ModelMultipleChoiceField(
         queryset=Student.objects.all()
