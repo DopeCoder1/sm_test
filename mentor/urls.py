@@ -10,8 +10,8 @@ urlpatterns = [
     path('mentor_user/profile/edit/', views.m_user_profile_edit, name='m_user_edit'),
     path('mentor/create_exam/', views.add_exam, name="m_create_exam"),
     path('mentor/list_exam/', views.list_exam, name="m_list_exam"),
-    path('mentor/<int:pk>/exam/', views.edit_exam, name="m_edit_exam"),
-    path('mentor/<int:pk>/delete_exam/', views.delete_exam, name="m_delete_exam")
+    # path('mentor/<int:pk>/exam/', views.edit_exam, name="m_edit_exam"),
+    # path('mentor/<int:pk>/delete_exam/', views.delete_exam, name="m_delete_exam")
 ]
 
 

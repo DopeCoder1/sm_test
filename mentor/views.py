@@ -110,37 +110,37 @@ def list_exam(request):
     return render(request, "mentor/exam_list.html", {"exams": exams})
 
 
-@login_required(login_url="mentor_login/")
-@user_passes_test(is_admin)
-def edit_exam(request, pk):
-    exam = get_object_or_404(Exam, id=pk)
-    if request.method == "POST":
-        form = ExamForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data.get("name")
-            duration = form.cleaned_data.get("duration")
-            passing_percentage = form.cleaned_data.get("passing_percentage")
-            users = form.cleaned_data.get("users")
-            active = form.cleaned_data.get("active")
-            show_result = form.cleaned_data.get("show_result")
-            exam.name = name
-            exam.duration = duration
-            exam.passing_percentage = passing_percentage
-            exam.active = active
-            exam.show_result = show_result
-            exam.save()
-            form.save()
-            import pdb
-            pdb.set_trace()
-            return redirect("m_list_exam")
-    form = ExamForm(initial={"name": exam.name, "duration": exam.duration, "passing_percentage": exam.passing_percentage, "users": [i.id for i in exam.users.all()], "active": exam.active, "show_result": exam.show_result})
-    return render(request, "mentor/exam_edit.html", {"form": form})
-
-@login_required(login_url="mentor_login/")
-@user_passes_test(is_admin)
-def delete_exam(request, pk):
-    exam = get_object_or_404(Exam, id=pk)
-    if request.method == "DELETE":
-        exam.delete()
-        return redirect("m_list_exam")
+# @login_required(login_url="mentor_login/")
+# @user_passes_test(is_admin)
+# def edit_exam(request, pk):
+#     exam = get_object_or_404(Exam, id=pk)
+#     if request.method == "POST":
+#         form = ExamForm(request.POST)
+#         if form.is_valid():
+#             name = form.cleaned_data.get("name")
+#             duration = form.cleaned_data.get("duration")
+#             passing_percentage = form.cleaned_data.get("passing_percentage")
+#             users = form.cleaned_data.get("users")
+#             active = form.cleaned_data.get("active")
+#             show_result = form.cleaned_data.get("show_result")
+#             exam.name = name
+#             exam.duration = duration
+#             exam.passing_percentage = passing_percentage
+#             exam.active = active
+#             exam.show_result = show_result
+#             exam.save()
+#             form.save()
+#             import pdb
+#             pdb.set_trace()
+#             return redirect("m_list_exam")
+#     form = ExamForm(initial={"name": exam.name, "duration": exam.duration, "passing_percentage": exam.passing_percentage, "users": [i.id for i in exam.users.all()], "active": exam.active, "show_result": exam.show_result})
+#     return render(request, "mentor/exam_edit.html", {"form": form})
+#
+# @login_required(login_url="mentor_login/")
+# @user_passes_test(is_admin)
+# def delete_exam(request, pk):
+#     exam = get_object_or_404(Exam, id=pk)
+#     if request.method == "DELETE":
+#         exam.delete()
+#         return redirect("m_list_exam")
 
